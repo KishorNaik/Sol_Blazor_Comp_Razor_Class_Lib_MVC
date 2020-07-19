@@ -1,0 +1,82 @@
+﻿Step 1:
+Add a Razor Class Liberary  in your existing project solution. We’ll call it “Sol_BlazorComp” for this example:
+
+Step 2:
+Add "Counter.razor" file inside the razor class lib., Check Razor Class Lib
+
+Step 3:
+Create a MVC Solution. Solution name is "Sol_UI"
+
+
+Step 4:
+Add a Razor Class Lib project referance into MVC Application.
+
+Step 5:
+On Startup.cs file.
+	1.1 Inside ConfigureServices()
+	add “services.AddServerSideBlazor();” just after “services.AddControllersWithViews();”.
+
+    services.AddServerSideBlazor();
+		
+	1.2 Inside Configure(), 
+		 add “endpoints.MapBlazorHub();” as the last line inside “app.UseEndpoints()”.
+    
+	app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+                endpoints.MapBlazorHub();
+            });
+
+Step 6:
+Add "_Import.razor" file inside the "Sol_UI" project root.
+
+    3.1 Inside the "_Import.razor" file, Add the following lines.
+
+@using System.Net.Http
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Routing
+@using Microsoft.AspNetCore.Components.Web
+@using Microsoft.JSInterop
+
+Step 7:
+Inside the Shared folder, go to _Layout.cshtml file.
+8.1
+Add the following Razor class lib CSS refereance in _Layout.cshtml file, inside the head tag
+<link href="_content/Sol_BlazorComp/styles.css" rel="stylesheet" />
+8.2
+Add the following razor class lib javascript referance in _Layout.cshtml file inside the bottom body tag
+
+ <script src="_framework/blazor.server.js"></script>
+<script src="_content/Sol_BlazorComp/exampleJsInterop.js"></script>
+
+Step 8
+Add a new Controller class name in controller method, We call it "DemoController".
+
+
+Step 9:
+Add a Index View.
+
+Step 10:
+Add a Counter Model class in Model folder. Check Model Folder.
+
+
+Step 11:
+In Index view page, add the following Counter Blazor Components
+
+<component type="typeof(Sol_BlazorComp.Counter)" render-mode="ServerPrerendered" param-CurrentCount="@Model.CurrentCount" />
+
+
+
+
+
+
+
+
+
+
+

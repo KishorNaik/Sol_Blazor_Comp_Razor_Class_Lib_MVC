@@ -1,0 +1,17 @@
+﻿@inject Microsoft.JSInterop.IJSRuntime jsRuntime
+
+<div class="my-component">
+    This Blazor component is defined in the <strong>Sol_BlazorComp</strong> package.
+</div>
+<div>
+    <button @onclick="InvokeJavascript">Invoke Javascript</button>
+</div>
+
+@code{
+
+    private void InvokeJavascript()
+    {
+        ExampleJsInterop.Prompt(jsRuntime, "Hello from Blazor");
+    }
+
+}

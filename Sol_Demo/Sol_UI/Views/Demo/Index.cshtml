@@ -1,0 +1,19 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model Sol_UI.Models.CounterModel
+<h1>Index</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <component type="typeof(Sol_BlazorComp.Component1)" render-mode="ServerPrerendered" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <component type="typeof(Sol_BlazorComp.Counter)" render-mode="ServerPrerendered" param-CurrentCount="@Model.CurrentCount" />
+        </div>
+    </div>
+</div>
